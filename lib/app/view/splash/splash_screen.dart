@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:shoezy_app/utils/colors.dart';
+import 'package:shoezy_app/app/utils/colors.dart';
 
 import '../onboarding/onboarding.dart';
 

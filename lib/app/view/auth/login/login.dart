@@ -1,13 +1,17 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:shoezy_app/utils/assets.dart';
-import 'package:shoezy_app/utils/colors.dart';
-import 'package:shoezy_app/view/auth/forget_pass/forget.dart';
-import 'package:shoezy_app/view/auth/signup/signup.dart';
-import 'package:shoezy_app/view/widgets/auth_field.dart';
-import 'package:shoezy_app/view/widgets/authbutton.dart';
-import 'package:shoezy_app/view/widgets/googlebutton.dart';
+import 'package:shoezy_app/app/utils/assets.dart';
+import 'package:shoezy_app/app/utils/colors.dart';
+import 'package:shoezy_app/app/view/auth/forget_pass/forget.dart';
+import 'package:shoezy_app/app/view/auth/phone/get_otp.dart';
+import 'package:shoezy_app/app/view/auth/signup/signup.dart';
+import 'package:shoezy_app/app/view/home/mainpage.dart';
+import 'package:shoezy_app/app/view/widgets/auth_field.dart';
+import 'package:shoezy_app/app/view/widgets/authbutton.dart';
+import 'package:shoezy_app/app/view/widgets/googlebutton.dart';
+
+import '../../home/homepage.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -93,7 +97,9 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(height: 40),
                 AuthButton(
                     onTap: () {
-                      if (_formKey.currentState!.validate()) {}
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => MainPage()));
+                      // if (_formKey.currentState!.validate()) {}
                     },
                     text: "Sign In"),
                 SizedBox(
@@ -109,7 +115,10 @@ class _LoginPageState extends State<LoginPage> {
                   height: 20,
                 ),
                 GoogleButton(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => OtpPage()));
+                  },
                   title: 'Continue With Phone',
                   icon: AppAssets.kPhone,
                   color: Colors.white,

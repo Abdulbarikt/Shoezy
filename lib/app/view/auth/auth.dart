@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shoezy_app/utils/colors.dart';
-import 'package:shoezy_app/view/auth/login/login.dart';
-import 'package:shoezy_app/view/widgets/p_button.dart';
+import 'package:shoezy_app/app/utils/colors.dart';
+import 'package:shoezy_app/app/view/auth/login/login.dart';
+import 'package:shoezy_app/app/view/widgets/p_button.dart';
 
 import 'signup/signup.dart';
 

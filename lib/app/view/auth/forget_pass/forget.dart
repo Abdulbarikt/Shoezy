@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:icons_plus/icons_plus.dart';
-import 'package:shoezy_app/utils/colors.dart';
-import 'package:shoezy_app/view/widgets/auth_field.dart';
-import 'package:shoezy_app/view/widgets/authbutton.dart';
+import 'package:shoezy_app/app/utils/colors.dart';
+import 'package:shoezy_app/app/view/auth/forget_pass/newpass.dart';
+import 'package:shoezy_app/app/view/widgets/auth_field.dart';
+import 'package:shoezy_app/app/view/widgets/authbutton.dart';
 
-class NewPass extends StatefulWidget {
-  const NewPass({Key? key}) : super(key: key);
+class Forget extends StatefulWidget {
+  const Forget({Key? key}) : super(key: key);
 
   @override
-  State<NewPass> createState() => _NewPassState();
+  State<Forget> createState() => _ForgetState();
 }
 
-class _NewPassState extends State<NewPass> {
+class _ForgetState extends State<Forget> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController nPassController = TextEditingController();
-  final TextEditingController passController = TextEditingController();
+  final TextEditingController mailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -52,36 +51,24 @@ class _NewPassState extends State<NewPass> {
                   height: 20,
                 ),
                 CustomTextField(
-                  controller: passController,
-                  hintText: 'New Password',
-                  prefixIcon: Bootstrap.file_lock2,
-                  obscureText: true,
+                  controller: mailController,
+                  hintText: 'Email',
+                  prefixIcon: Icons.mail_outline,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter a password';
+                      return 'Please enter your email';
                     }
                     return null;
                   },
                 ),
-                SizedBox(height: 20),
-                CustomTextField(
-                  controller: nPassController,
-                  hintText: 'Confirm Password',
-                  prefixIcon: Bootstrap.file_lock2,
-                  obscureText: true,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter a password';
-                    }
-                    return null;
-                  },
-                ),
-                SizedBox(height: 20),
+                SizedBox(height: 40),
                 AuthButton(
                   onTap: () {
                     if (_formKey.currentState!.validate()) {}
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => NewPass()));
                   },
-                  text: "Continue",
+                  text: "Sent Link",
                 ),
               ],
             ),

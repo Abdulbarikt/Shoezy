@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intro_screen_onboarding_flutter/introduction.dart';
 import 'package:intro_screen_onboarding_flutter/introscreenonboarding.dart';
-import 'package:shoezy_app/utils/colors.dart';
-import 'package:shoezy_app/view/auth/auth.dart';
+import 'package:shoezy_app/app/utils/colors.dart';
+import 'package:shoezy_app/app/view/auth/auth.dart';
 
 class OnBoardScreen extends StatelessWidget {
   final List<Introduction> list = [

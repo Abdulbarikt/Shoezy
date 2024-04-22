@@ -1,17 +1,18 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:shoezy_app/utils/colors.dart';
-import 'package:shoezy_app/view/auth/forget_pass/newpass.dart';
-import 'package:shoezy_app/view/widgets/auth_field.dart';
-import 'package:shoezy_app/view/widgets/authbutton.dart';
+import 'package:shoezy_app/app/utils/colors.dart';
+import 'package:shoezy_app/app/view/auth/phone/otp.dart';
+import 'package:shoezy_app/app/view/widgets/auth_field.dart';
+import 'package:shoezy_app/app/view/widgets/authbutton.dart';
 
-class Forget extends StatefulWidget {
-  const Forget({Key? key}) : super(key: key);
+class OtpPage extends StatefulWidget {
+  const OtpPage({Key? key}) : super(key: key);
 
   @override
-  State<Forget> createState() => _ForgetState();
+  State<OtpPage> createState() => _OtpPageState();
 }
 
-class _ForgetState extends State<Forget> {
+class _OtpPageState extends State<OtpPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController mailController = TextEditingController();
 
@@ -39,7 +40,7 @@ class _ForgetState extends State<Forget> {
                 ),
                 Center(
                   child: Text(
-                    'Select which contact details should we use to Reset Your Password ',
+                    'Select which contact details should we use to Sign Up ',
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 14,
@@ -52,11 +53,14 @@ class _ForgetState extends State<Forget> {
                 ),
                 CustomTextField(
                   controller: mailController,
-                  hintText: 'Email',
-                  prefixIcon: Icons.mail_outline,
+                  hintText: 'Phone Number',
+                  prefixIcon: CupertinoIcons.phone,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter your email';
+                      return 'Please enter your phone number';
+                    }
+                    if (!RegExp(r'^\+?\d{10,15}$').hasMatch(value)) {
+                      return 'Please enter a valid phone number';
                     }
                     return null;
                   },
@@ -65,10 +69,12 @@ class _ForgetState extends State<Forget> {
                 AuthButton(
                   onTap: () {
                     if (_formKey.currentState!.validate()) {}
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => NewPass()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => PinputExample()));
                   },
-                  text: "Sent Link",
+                  text: "Get OTP",
                 ),
               ],
             ),

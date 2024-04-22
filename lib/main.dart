@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
-import 'view/splash/splash_screen.dart';
+import 'package:provider/provider.dart';
+import 'app/controller/navbar.dart';
+import 'app/view/splash/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,11 +12,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
-      theme: ThemeData(fontFamily: 'DM Sans'),
-      debugShowCheckedModeBanner: false,
-      title: 'Shoezy',
-      home: SplashScreen(),
+    return ChangeNotifierProvider(
+      create: (context) => NavigationProvider(),
+      child: MaterialApp(
+        theme: ThemeData(fontFamily: 'DM Sans'),
+        debugShowCheckedModeBanner: false,
+        title: 'Shoezy',
+        home: SplashScreen(),
+      ),
     );
   }
 }

@@ -1,12 +1,14 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:shoezy_app/utils/assets.dart';
-import 'package:shoezy_app/utils/colors.dart';
-import 'package:shoezy_app/view/auth/login/login.dart';
-import 'package:shoezy_app/view/widgets/auth_field.dart';
-import 'package:shoezy_app/view/widgets/authbutton.dart';
-import 'package:shoezy_app/view/widgets/googlebutton.dart';
+import 'package:shoezy_app/app/utils/assets.dart';
+import 'package:shoezy_app/app/utils/colors.dart';
+import 'package:shoezy_app/app/view/auth/login/login.dart';
+import 'package:shoezy_app/app/view/widgets/auth_field.dart';
+import 'package:shoezy_app/app/view/widgets/authbutton.dart';
+import 'package:shoezy_app/app/view/widgets/googlebutton.dart';
+
+import '../phone/get_otp.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -106,7 +108,10 @@ class _SignUpPageState extends State<SignUpPage> {
                   height: 20,
                 ),
                 GoogleButton(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => OtpPage()));
+                  },
                   title: 'Continue with Phone',
                   icon: AppAssets.kPhone,
                   color: Colors.white,
