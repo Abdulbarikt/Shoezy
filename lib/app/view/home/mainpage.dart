@@ -1,42 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:shoezy_app/app/utils/colors.dart';
-import 'package:shoezy_app/app/view/home/cart.dart';
-import 'package:shoezy_app/app/view/home/homepage.dart';
-import 'package:shoezy_app/app/view/home/profile.dart';
-import 'package:shoezy_app/app/view/home/wishlist.dart';
-import 'package:shoezy_app/app/view/widgets/navbar.dart'; // Make sure the path is correct
+import 'package:provider/provider.dart';
+import 'package:shoezy_app/app/controller/navbar.dart';
+import 'package:shoezy_app/app/view/home/Cart/cart.dart';
+import 'package:shoezy_app/app/view/home/HomePage/homepage.dart';
+import 'package:shoezy_app/app/view/home/Profile/profile.dart';
+import 'package:shoezy_app/app/view/home/WishList/wishlist.dart';
+import 'package:shoezy_app/app/view/widgets/navbar.dart';
 
-class MainPage extends StatefulWidget {
+class MainPage extends StatelessWidget {
   const MainPage({super.key});
 
   @override
-  _MainPageState createState() => _MainPageState();
-}
-
-class _MainPageState extends State<MainPage> {
-  int _currentIndex = 0;
-
-  final List<Widget> _pages = [
-    const HomePage(),
-    const WishListPage(),
-    const CartPage(),
-    ProfilePage(),
-  ];
-
-  @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<PageIndexProvider>(context);
+    final List<Widget> _pages = [
+      const HomePage(),
+      const WishListPage(),
+      const CartPage(),
+      ProfilePage(),
+    ];
+
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColors.kHint,
-        body: _pages[_currentIndex],
-        bottomNavigationBar: CustomBottomNavigationBar(
-          currentIndex: _currentIndex,
-          onTap: (index) {
-            setState(() {
-              _currentIndex = index;
-            });
-          },
-        ),
+        backgroundColor: Colors.black,
+        body: _pages[provider.currentIndex],
+        bottomNavigationBar: CustomBottomNavigationBar(),
       ),
     );
   }

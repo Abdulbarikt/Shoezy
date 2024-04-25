@@ -11,7 +11,6 @@ import 'package:shoezy_app/app/view/widgets/auth_field.dart';
 import 'package:shoezy_app/app/view/widgets/authbutton.dart';
 import 'package:shoezy_app/app/view/widgets/googlebutton.dart';
 
-import '../../home/homepage.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
